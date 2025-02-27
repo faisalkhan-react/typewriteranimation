@@ -45,7 +45,7 @@ function App() {
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
         <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Typewriter with Hashtag Highlighting
+          Typewriter with Hashtag & Mention Highlighting
         </h1>
 
         <form onSubmit={handleSubmit} className="mb-6">
@@ -56,6 +56,7 @@ function App() {
               placeholder="Enter your text with #hashtags..."
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
+              
             />
           </div>
 
@@ -68,7 +69,10 @@ function App() {
         </form>
 
         <div className="mb-2 text-sm font-medium text-gray-700">Output:</div>
-        <TypewriterText text={submittedText} hashtagColors={hashtagColors} />
+
+        <div className="max-h-[100px] overflow-auto border-rounded bg-white">
+          <TypewriterText text={submittedText} hashtagColors={hashtagColors} />
+        </div>
       </div>
     </div>
   );

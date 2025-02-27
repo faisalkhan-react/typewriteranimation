@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const TypewriterText = ({ text, hashtagColors }) => {
   const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const bottomOfPanelref = useRef(null);
   useEffect(() => {
     if (currentIndex < text.length) {
       const timer = setTimeout(() => {
@@ -19,6 +19,14 @@ const TypewriterText = ({ text, hashtagColors }) => {
     setDisplayedText("");
     setCurrentIndex(0);
   }, [text]);
+
+  useEffect(() => {
+    if (bottomOfPanelref.current) {
+      bottomOfPanelref.current.scrollIntoView();
+    }
+  });
+
+  
 
   const renderTextWithHashtags = () => {
     if (!displayedText) return null;
@@ -44,6 +52,7 @@ const TypewriterText = ({ text, hashtagColors }) => {
   return (
     <div className="min-h-[100px] p-4 border rounded-md bg-white text-black">
       {renderTextWithHashtags()}
+      <div ref={bottomOfPanelref}></div>
     </div>
   );
 };
