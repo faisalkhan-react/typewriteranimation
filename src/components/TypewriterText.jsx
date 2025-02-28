@@ -9,7 +9,7 @@ const TypewriterText = ({ text, hashtagColors }) => {
       const timer = setTimeout(() => {
         setDisplayedText((prev) => prev + text[currentIndex]);
         setCurrentIndex(currentIndex + 1);
-      }, 50);
+      }, 5);
 
       return () => clearTimeout(timer);
     }
